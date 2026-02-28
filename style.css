@@ -1,0 +1,358 @@
+ :root {
+        --stars-speed-1: 55s;
+        --stars-speed-2: 95s;
+        --stars-speed-3: 140s;
+        --primary: #38bdf8;
+        --panel: #ffffff12;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box
+    }
+
+    .brand {           
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        background: linear-gradient(90deg, #38bdf8, #a855f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 15px rgba(56, 189, 248, 0.5),
+            0 0 30px rgba(168, 85, 247, 0.5);
+        cursor: pointer;
+    }
+
+    .brand:hover {
+        text-shadow: 0 0 25px #38bdf8, 0 0 40px #a855f7;
+        transform: scale(1.05);
+        transition: 0.3s ease;
+    }
+
+
+
+    body {
+        font-family: Poppins, Arial;
+        color: #e5e7eb;
+        overflow-x: hidden;
+        background: #020617;
+    }
+
+    .wave {
+        position: fixed;
+        inset: 0;
+        background:
+            radial-gradient(circle at 15% 25%, #2a2a6a30, transparent 45%),
+            radial-gradient(circle at 80% 70%, #5b21b620, transparent 40%),
+            radial-gradient(circle at 50% 120%, #1e3a8a20, transparent 55%),
+            linear-gradient(180deg, #000000 0%, #020617 40%, #01010a 100%);
+        z-index: -5;
+    }
+
+    .wave::after {
+        content: "";
+        position: absolute;
+        left: -10%;
+        right: -10%;
+        bottom: -25%;
+        height: 65%;
+        background: radial-gradient(circle at 50% 0%, #1e40af40, transparent 65%);
+        animation: swell 12s ease-in-out infinite;
+    }
+
+    @keyframes swell {
+
+        0%,
+        100% {
+            transform: translateY(0)
+        }
+
+        50% {
+            transform: translateY(25px)
+        }
+    }
+
+    .stars,
+    .stars2,
+    .stars3 {
+        position: fixed;
+        inset: 0;
+        background-repeat: repeat;
+        z-index: -3;
+    }
+
+    .stars {
+        background-image:
+            radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+            radial-gradient(2px 2px at 120px 90px, #fff, transparent),
+            radial-gradient(2px 2px at 260px 150px, #fff, transparent),
+            radial-gradient(2px 2px at 420px 210px, #fff, transparent),
+            radial-gradient(2px 2px at 580px 270px, #fff, transparent),
+            radial-gradient(2px 2px at 740px 330px, #fff, transparent),
+            radial-gradient(2px 2px at 900px 390px, #fff, transparent),
+            radial-gradient(2px 2px at 1060px 450px, #fff, transparent),
+            radial-gradient(2px 2px at 1220px 510px, #fff, transparent),
+            radial-gradient(2px 2px at 1380px 570px, #fff, transparent);
+        background-size: 1500px 950px;
+        animation: starsMove var(--stars-speed-1) linear infinite;
+        opacity: .95;
+    }
+
+    .stars2 {
+        background-image:
+            radial-gradient(3px 3px at 80px 60px, #fff, transparent),
+            radial-gradient(3px 3px at 260px 180px, #fff, transparent),
+            radial-gradient(3px 3px at 460px 260px, #fff, transparent),
+            radial-gradient(3px 3px at 700px 320px, #fff, transparent),
+            radial-gradient(3px 3px at 920px 140px, #fff, transparent),
+            radial-gradient(3px 3px at 1150px 380px, #fff, transparent),
+            radial-gradient(3px 3px at 1400px 300px, #fff, transparent);
+        background-size: 1500px 950px;
+        animation: starsMove var(--stars-speed-2) linear infinite;
+        opacity: .75;
+    }
+
+    .stars3 {
+        background-image:
+            radial-gradient(4px 4px at 200px 120px, #fff, transparent),
+            radial-gradient(4px 4px at 650px 260px, #fff, transparent),
+            radial-gradient(4px 4px at 1000px 340px, #fff, transparent),
+            radial-gradient(4px 4px at 1350px 200px, #fff, transparent);
+        background-size: 1500px 950px;
+        animation: starsMove var(--stars-speed-3) linear infinite;
+        opacity: .5;
+    }
+
+    @keyframes starsMove {
+        0% {
+            background-position: 0 950px
+        }
+
+        100% {
+            background-position: 0 0
+        }
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 2rem
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        padding: 1rem 0;
+        backdrop-filter: blur(16px);
+        z-index: 10;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center
+    }
+
+    .brand {
+        font-weight: 700;
+        font-size: 1.3rem
+    }
+
+    nav a {
+        text-decoration: none;
+        color: #f9fafb;
+        margin-left: 1rem;
+        transition: .25s;
+    }
+
+    nav a:hover {
+        text-shadow: 0 0 8px var(--primary)
+    }
+
+    .hero {
+        text-align: center;
+        margin-top: 2rem;
+        padding: 2.5rem 1rem;
+        border-radius: 18px;
+        background: var(--panel);
+        border: 1px solid #ffffff25;
+        transform: translateY(50px);
+        opacity: 0;
+        transition: .7s;
+    }
+
+    .hero.show {
+        transform: translateY(0);
+        opacity: 1
+    }
+
+    .hero h1 {
+        font-size: 2.5rem
+    }
+
+    .hero span {
+        color: var(--primary)
+    }
+
+    .badge {
+        display: inline-block;
+        background: #22c55e1a;
+        border: 1px solid #22c55e50;
+        padding: 4px 10px;
+        border-radius: 20px;
+        font-size: 12px;
+        margin-bottom: .6rem;
+    }
+
+    .btn {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: .7rem 1.3rem;
+        border-radius: 10px;
+        background: var(--primary);
+        color: #021220;
+        text-decoration: none;
+        font-weight: 600;
+        transition: .3s;
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px #38bdf840
+    }
+
+    .section-title {
+        margin: 2.5rem 0 1rem;
+        font-weight: 700
+    }
+
+    .card {
+        background: #ffffff0e;
+        border: 1px solid #ffffff25;
+        padding: 1.2rem;
+        border-radius: 16px;
+        margin-top: 1rem;
+        transform: translateY(40px);
+        opacity: 0;
+        transition: .6s;
+        perspective: 600px;
+    }
+
+    .card.show {
+        transform: translateY(0);
+        opacity: 1
+    }
+
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 15px 35px #00000055;
+    }
+
+    .timeline {
+        border-left: 2px solid #334155;
+        padding-left: 1rem
+    }
+
+    .timeline-item {
+        margin-bottom: 1.2rem;
+        position: relative;
+        padding-left: 12px;
+    }
+
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -9px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        background: var(--primary);
+        border-radius: 50%;
+    }
+
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: .6rem
+    }
+
+    .skills span {
+        background: #0f172a;
+        padding: .45rem .75rem;
+        border-radius: 10px;
+        border: 1px solid #334155;
+    }
+
+    .projects {
+        display: grid;
+        gap: 1rem
+    }
+
+    .project {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        cursor: pointer
+    }
+
+    .project img {
+        width: 100%;
+        display: block;
+        transition: transform .6s
+    }
+
+    .project:hover img {
+        transform: scale(1.1)
+    }
+
+    .project::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, #000a, transparent 60%);
+        opacity: 0;
+        transition: .35s
+    }
+
+    .project:hover::after {
+        opacity: 1
+    }
+
+    .project-info {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 1rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: .35s
+    }
+
+    .project:hover .project-info {
+        opacity: 1;
+        transform: translateY(0)
+    }
+
+    .contact a {
+        color: var(--primary);
+        text-decoration: none
+    }
+
+    footer {
+        text-align: center;
+        padding: 1.3rem;
+        opacity: .7;
+        margin-top: 2.5rem
+    }
+
+    @media(max-width:640px) {
+        .hero h1 {
+            font-size: 2rem
+        }
+
+        nav div a {
+            margin-left: .6rem
+        }
+    }
